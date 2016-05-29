@@ -1,0 +1,7 @@
+formatter.name: pretty
+suites:
+    main_suite:
+        namespace: DocumentStorage
+        psr4_prefix: DocumentStorage
+        spec_path: "%paths.config%"
+        spec_prefix: tests
