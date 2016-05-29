@@ -14,7 +14,7 @@
     },
     "require": {
         "php": "^7.0",
-        "baruica/document-storage": "~0.6.0",
+        "baruica/document-storage": "^0.6.1",
         "aws/aws-sdk-php" : "^3.0.0"
     },
     "require-dev": {
