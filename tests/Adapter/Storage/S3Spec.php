@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace tests\DocumentStorage\Adapter\Storage;
 
@@ -6,9 +6,6 @@ use Aws\S3\S3Client;
 use PhpSpec\ObjectBehavior;
 use DocumentStorage\Storage;
 
-/**
- * @mixin \DocumentStorage\Adapter\Storage\S3
- */
 class S3Spec extends ObjectBehavior
 {
     public function let(S3Client $s3Client)
