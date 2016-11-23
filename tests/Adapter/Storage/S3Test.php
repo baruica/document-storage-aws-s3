@@ -2,7 +2,6 @@
 
 namespace tests\DocumentStorage\Adapter\Storage;
 
-use Aws\Common\Enum\Region;
 use Aws\S3\S3Client;
 use DocumentStorage\Adapter\Storage\S3;
 use DocumentStorage\Exception\DocumentNotFound;
@@ -34,14 +33,12 @@ class S3Test extends \PHPUnit_Framework_TestCase
             throw new \PHPUnit_Framework_SkippedTestSuiteError('No credentials file found in home directory, skipping tests.');
         }
 
-        $region = Region::EU_WEST_1;
+        $region = 'eu-west-1';
 
-        self::$s3_client = S3Client::factory(
-            [
-                'profile' => 'test_profile',
-                'region' => $region,
-            ]
-        );
+        self::$s3_client = new S3Client([
+            'profile' => 'test_profile',
+            'region' => $region,
+        ]);
 
         self::$bucket = uniqid('document-storage-tests-', true);
         self::$folder = 'test folder';
@@ -51,7 +48,7 @@ class S3Test extends \PHPUnit_Framework_TestCase
             'LocationConstraint' => $region,
         ]);
 
-        self::$s3_client->waitUntilBucketExists([
+        self::$s3_client->waitUntil('BucketExists', [
             'Bucket' => self::$bucket,
         ]);
 
@@ -64,11 +61,9 @@ class S3Test extends \PHPUnit_Framework_TestCase
 
     public static function tearDownAfterClass()
     {
-        self::$s3_client->clearBucket(self::$bucket);
-
         self::$s3_client->deleteBucket(['Bucket' => self::$bucket]);
 
-        self::$s3_client->waitUntilBucketNotExists(['Bucket' => self::$bucket]);
+        self::$s3_client->waitUntil('BucketNotExists', ['Bucket' => self::$bucket]);
     }
 
     public function provideStore() : array
