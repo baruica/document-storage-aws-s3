@@ -6,11 +6,11 @@
     "homepage": "https://github.com/baruica/document-storage-aws-s3",
     "license": "Apache-2.0",
     "autoload": {
-    "psr-4": { "DocumentStorage\\": "src" },
+    "psr-4": { "DocumentStorage\\": "src/DocumentStorage" },
         "exclude-from-classmap": [ "tests" ]
     },
     "autoload-dev": {
-        "psr-4": { "tests\\DocumentStorage\\": "tests" }
+        "psr-4": { "DocumentStorage\\": "tests/DocumentStorage" }
     },
     "require": {
         "php": "^7.0",

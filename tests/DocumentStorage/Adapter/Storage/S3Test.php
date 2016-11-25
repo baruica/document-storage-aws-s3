@@ -1,9 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace tests\DocumentStorage\Adapter\Storage;
+namespace DocumentStorage\Adapter\Storage;
 
 use Aws\S3\S3Client;
-use DocumentStorage\Adapter\Storage\S3;
 use DocumentStorage\Exception\DocumentNotFound;
 use DocumentStorage\Exception\DocumentNotStored;
 
