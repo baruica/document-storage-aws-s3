@@ -1,3 +1,5 @@
+#!/usr/bin/env make -f
+
 .DEFAULT_GOAL := help
 
 # This prevents make from being confused by a file with the same name as the phony target.
