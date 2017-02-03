@@ -6,8 +6,10 @@ namespace DocumentStorage\Adapter\Storage;
 use Aws\S3\S3Client;
 use DocumentStorage\Exception\DocumentNotFound;
 use DocumentStorage\Exception\DocumentNotStored;
+use PHPUnit\Framework\SkippedTestSuiteError;
+use PHPUnit\Framework\TestCase;
 
-class S3Test extends \PHPUnit_Framework_TestCase
+class S3Test extends TestCase
 {
     /** @var \Aws\S3\S3Client */
     protected static $s3_client;
@@ -30,7 +32,7 @@ class S3Test extends \PHPUnit_Framework_TestCase
         $processUser = posix_getpwuid(posix_geteuid());
 
         if (!file_exists(sprintf('/home/%s/.aws/credentials', $processUser['name']))) {
-            throw new \PHPUnit_Framework_SkippedTestSuiteError('No credentials file found in home directory, skipping tests.');
+            throw new SkippedTestSuiteError('No credentials file found in home directory, skipping tests.');
         }
 
         $region = 'eu-west-1';
